@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mk-player-custom.css">
+        <!-- all js house  -->
+    <script type="text/javascript" src="../js/video.js"></script>
+    <script src="../js/volume.js"></script>
+
+    <script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <style media="screen">
+    .mkplayer{
+      width: 52% !important;
+      height: 399px !important;
+      margin-left: 6%;
+      margin-top: 98px;
+      box-shadow:0 0 5px #ccc;
+      border-radius: .4rem;
+      box-sizing: border-box;
+    }
+    .video-js{
+      border-radius: .4rem;
+      box-sizing: border-box;
+    }
+
+    </style>
+
+
+
+  </head>
+  <body  >
+<!-- oncontextmenu="return false;" -->
+    <div class="main-body">
+      <div class="mkplayer" >
+        <video
+          id="my-player"
+          class="video-js vjs-big-play-centered vjs-show-big-play-button-on-pause "
+
+          poster="http://res.cloudinary.com/duzdotcoi/image/upload/c_scale,h_500,w_890/v1522890619/sample.jpg"
+
+
+          >
+          <source src="https://edge4.bioscopelive.com/hls/MNsKARHHGA0ujWSkyWvoCA/1522547531/ekattur_tv.m3u8" type="application/x-mpegURL">
+
+
+
+        </video>
+      </div>
+    </div>
+      <script type="text/javascript">
+          var Player = videojs("my-player", {
+                "controls": true,
+                "autoplay": true,
+                "preload": "auto",
+                controlBar: {
+
+                  volumePanel: {
+                    inline: false
+                  },
+
+
+                    children: [
+                      {
+                        name: 'PlayToggle'
+                      },
+                      {
+                        name: 'ProgressControl',
+                      },
+                      {
+                        name: 'liveDisplay'
+                      },
+                      {
+                        name: 'volumePanel'
+                      },
+
+                      {
+                        name: 'fullscreenToggle'
+                      }
+                    ],
+                },
+
+
+                // "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/MY5SatbZMAo"}],
+          });
+
+
+
+      </script>
+<!-- constanr volume -->
+   <script>
+   (function() {
+     var vid1 = videojs('my-player');
+     vid1.persistvolume({
+       namespace: "Virality-Is-Reality"
+     });
+   })();
+ </script>
+
+
+<!-- hotkey start-->
+<script src="../js/videojs.hotkeys.js"></script>
+<script>
+  // initialize the plugin
+  videojs('my-player').ready(function() {
+    this.hotkeys({
+      volumeStep: 0.1,
+      seekStep: 5,
+      enableMute: true,
+      enableFullscreen: true,
+      enableNumbers: false,
+      enableVolumeScroll: true,
+      // Enhance existing simple hotkey with a complex hotkey
+      fullscreenKey: function(e) {
+        // fullscreen with the F key or Ctrl+Enter
+        return ((e.which === 70) || (e.ctrlKey && e.which === 13));
+      },
+      // Custom Keys
+      customKeys: {
+        // Add new simple hotkey
+        simpleKey: {
+          key: function(e) {
+            // Toggle something with S Key
+            return (e.which === 83);
+          },
+          handler: function(player, options, e) {
+            // Example
+            if (player.paused()) {
+              player.play();
+            } else {
+              player.pause();
+            }
+          }
+        },
+        // Add new complex hotkey
+        complexKey: {
+          key: function(e) {
+            // Toggle something with CTRL + D Key
+            return (e.ctrlKey && e.which === 68);
+          },
+          handler: function(player, options, event) {
+            // Example
+            if (options.enableMute) {
+              player.muted(!player.muted());
+            }
+          }
+        },
+        // Override number keys example from https://github.com/ctd1500/videojs-hotkeys/pull/36
+        numbersKey: {
+          key: function(event) {
+            // Override number keys
+            return ((event.which > 47 && event.which < 59) || (event.which > 95 && event.which < 106));
+          },
+          handler: function(player, options, event) {
+            // Do not handle if enableModifiersForNumbers set to false and keys are Ctrl, Cmd or Alt
+            if (options.enableModifiersForNumbers || !(event.metaKey || event.ctrlKey || event.altKey)) {
+              var sub = 48;
+              if (event.which > 95) {
+                sub = 96;
+              }
+              var number = event.which - sub;
+              player.currentTime(player.duration() * number * 0.1);
+            }
+          }
+        },
+        emptyHotkey: {
+          // Empty
+        },
+        withoutKey: {
+          handler: function(player, options, event) {
+              console.log('withoutKey handler');
+          }
+        },
+        withoutHandler: {
+          key: function(e) {
+              return true;
+          }
+        },
+        malformedKey: {
+          key: function() {
+            console.log('I have a malformed customKey. The Key function must return a boolean.');
+          },
+          handler: function(player, options, event) {
+            //Empty
+          }
+        }
+      }
+    });
+  });
+</script>
+<!-- hotkey end-->
+
+
+  </body>
+</html>
