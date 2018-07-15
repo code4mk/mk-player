@@ -1,0 +1,13 @@
+    .video-js.vjs-user-inactive .title-overlay-container{
+      visibility: hidden !important;
+      opacity: 0 !important;
+      -webkit-transition: visibility 1s, opacity 1s;
+      -moz-transition: visibility 1s, opacity 1s;
+      -ms-transition: visibility 1s, opacity 1s;
+      -o-transition: visibility 1s, opacity 1s;
+      transition: visibility 1s, opacity 1s
+    }
+.title-overlay-container{
+  margin-left: 5%;
+  color: red !important;
+}

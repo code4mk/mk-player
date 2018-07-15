@@ -1,0 +1,162 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.mkplayer{
+  width: 100%;
+  height: 658px;
+}
+
+.video-js {
+  vertical-align: top;
+  box-sizing: border-box;
+  color: #fff;
+  /* background-color: #000; */
+  background-color: #00BCD4;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  word-break: initial;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.video-js .vjs-duration,
+.vjs-no-flex .vjs-duration {
+  display: block !important;
+}
+.vjs-current-time{
+  display: block !important;
+}
+
+ .video-js .vjs-big-play-button{
+
+  /* circle big button */
+  border-radius: 50%;
+}
+
+ .video-js .vjs-play-progress {
+  background-color: #00BCD4;
+  border-radius: 10px;
+}
+
+ .video-js .vjs-load-progress div {
+  background-color: rgba(15,69,96,0.7);
+  border-radius: 10px;
+ }
+ .video-js .vjs-play-progress:before {
+  /* progress circle point */
+  font-size: 1.2em;
+  position: absolute;
+  right: -0.5em;
+  top: -0.333333333333333em;
+  color: #00BCD4;
+  z-index: 1;
+}
+ .vjs-volume-bar{
+  background-color: #333;
+  background-color: rgba(0,0,0,.6);
+  /* border-radius: 10px; */
+}
+ .video-js .vjs-volume-level{
+  background-color: #00BCD4;
+  /* border-radius: 10px; */
+}
+
+ .video-js .vjs-control-bar {
+  /* control bar */
+  border-radius: .25rem;
+  margin-bottom: 10px;
+  width: 60%;
+  margin-left: 20%;
+}
+
+.video-js .vjs-control-bar .vjs-play-progress:before{
+  display: none !important;
+}
+ .video-js .vjs-progress-holder {
+  height: .5em;
+  border-radius: 10px;
+  background-color: #333;
+  background-color: rgba(0,0,0,.6);
+  /* margin-left: 15px; */
+}
+ .video-js .vjs-progress-control {
+  border-radius: 10px;
+  /* margin-right: 6%; */
+}
+
+.video-js .vjs-progress-control .vjs-mouse-display {
+  display: none;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  /* background-color: #000; */
+  z-index: 1;
+}
+.video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-vertical{
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+/* caraousel time z-index control bar */
+.video-js .vjs-control-bar{
+  z-index: 999;
+}
+
+.video-js .vjs-control {
+  cursor: pointer !important;
+}
+
+
+/* kamal radius system */
+/* yo test another */
+
+/* inactive progress bar */
+.video-js {
+  overflow: hidden;
+}
+.video-js.vjs-has-started .vjs-control-bar {
+  -webkit-transition: bottom 0.3s;
+          transition: bottom 0.3s;
+}
+
+.video-js.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar .vjs-progress-control {
+  margin-top: -16px !important;
+  width: 100% !important;
+  position: absolute;
+}
+.video-js.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar .vjs-progress-control .vjs-progress-holder  {
+
+  width: 99.8% !important;
+  margin-left: 1px !important;
+  position: absolute !important;
+}
+.video-js.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+  /* bottom: -3em; */
+  bottom: -4em;
+  visibility: visible;
+  opacity: 1;
+  width: 100% !important;
+  margin-left: 0px !important;
+  position: absolute;
+}
+
+.video-js.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar .vjs-play-progress{
+  background-color: red !important;
+}
+.video-js.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar .vjs-play-progress:before{
+  display: none !important;
+}
+.video-js.vjs-user-inactive.vjs-playing:hover .vjs-progress-control {
+  /* Force using small progress when vjs-control-bar is hidden */
+  font-size: 0.3em;
+}
+.video-js.vjs-using-native-controls .vjs-control-bar,
+.video-js.vjs-controls-disabled .vjs-control-bar,
+.video-js.vjs-error .vjs-control-bar {
+  visibility: hidden;
+}
