@@ -5,9 +5,12 @@
     <title></title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/mk-player-custom.css">
+    <link rel="stylesheet" href="../css/contex-menu.css">
         <!-- all js house  -->
     <script type="text/javascript" src="../js/video.js"></script>
     <script src="../js/volume.js"></script>
+    <script src="../js/contex-menu.js"></script>
+    <script src="../js/contex-menu-ui.js"></script>
     <style media="screen">
     .mkplayer{
       width: 52% !important;
@@ -21,6 +24,9 @@
     .video-js{
       border-radius: .4rem;
       box-sizing: border-box;
+    }
+    .vjs-button title{
+      color: red;
     }
 
     </style>
@@ -54,7 +60,7 @@
 
         var Player = videojs("my-player", {
               "controls": true,
-              "autoplay": false,
+              // "autoplay": false,
               "preload": "auto",
               pipButton: {},
               controlBar: {
@@ -202,6 +208,40 @@
   });
 </script>
 <!-- hotkey end-->
+<!-- contex menu start -->
+<script type="text/javascript">
+
+      var player = videojs('my-player');
+      player.contextmenuUI({
+  content: [{
+
+    // A plain old link.
+    href: 'https://github.com/code4mk/mk-player',
+    label: 'MK Video Player'
+  },{
+
+    // A link with a listener. Its `href` will automatically be `#`.
+    label: 'Loop',
+    listener: function() {
+      let a = player.volume() * 10;
+      alert(`${a} %`);
+    }
+  },
+   {
+    href: 'https://github.com/code4mk/mk-player',
+    label: 'Github'
+  },
+  {
+
+    // A link with a listener. Its `href` will automatically be `#`.
+    label: 'About',
+    listener: function() {
+      alert('mk player');
+    }
+  }]
+  });
+
+</script>
 
 
   </body>
