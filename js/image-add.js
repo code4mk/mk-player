@@ -94,5 +94,5 @@
     player.on('loadedmetadata', overlay.checkEndTime);
   };
 
-  videojs.plugin('imageOverlay', imageOverlay);
+  videojs.registerPlugin('imageOverlay', imageOverlay);
 }(window, window.videojs));
